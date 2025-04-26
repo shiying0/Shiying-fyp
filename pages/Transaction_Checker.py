@@ -29,43 +29,72 @@ def render():
     with st.expander("🔍 How Fraud is Detected (Click to expand)", expanded=False):
         st.markdown("""
         <style>
-        /* Feature Summary box */
+        /* Light mode (default) */
         .feature-box {
-        background-color: #f0f8ff; /* Lighter blue */
-        padding: 16px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        border-left: 4px solid #87ceeb; /* Light sky blue */
+            background-color: #f0f8ff; /* Light blue */
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #87ceeb; /* Sky blue */
+            color: #000000; /* Black text */
         }
 
-        /* Suspicious Patterns section */
         .pattern-box {
-        background-color: #fffaf0; /* Lighter orange */
-        padding: 16px;
-        border-radius: 10px;
-        border-left: 4px solid #ffd700; /* Gold */
+            background-color: #fffaf0; /* Light orange */
+            padding: 16px;
+            border-radius: 10px;
+            border-left: 4px solid #ffd700; /* Gold */
+            color: #000000; /* Black text */
         }
 
-        /* Fraud pattern table styling */
         .fraud-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-family: "Segoe UI", sans-serif;
-        font-size: 15px;
-        margin-top: 10px;
+            width: 100%;
+            border-collapse: collapse;
+            font-family: "Segoe UI", sans-serif;
+            font-size: 15px;
+            margin-top: 10px;
+            color: #000000; /* Black text */
         }
         .fraud-table thead {
-        background-color: #ffe4e1; /* Light pink */
-        text-align: left;
+            background-color: #ffe4e1; /* Light pink */
+            text-align: left;
         }
         .fraud-table th, .fraud-table td {
-        padding: 12px 16px;
+            padding: 12px 16px;
         }
         .fraud-table tbody tr {
-        border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
         }
         .fraud-table tbody tr:hover {
-        background-color: #f5f5f5; /* Very light gray */
+            background-color: #f5f5f5;
+        }
+
+        /* Dark mode overrides */
+        @media (prefers-color-scheme: dark) {
+            .feature-box {
+                background-color: #1e293b; /* Dark blue-gray */
+                border-left: 4px solid #38bdf8; /* Light blue */
+                color: #ffffff; /* White text */
+            }
+
+            .pattern-box {
+                background-color: #3b2f2f; /* Dark reddish brown */
+                border-left: 4px solid #facc15; /* Yellow */
+                color: #ffffff; /* White text */
+            }
+
+            .fraud-table {
+                color: #ffffff; /* White text */
+            }
+            .fraud-table thead {
+                background-color: #4b5563; /* Darker header */
+            }
+            .fraud-table tbody tr {
+                border-bottom: 1px solid #6b7280;
+            }
+            .fraud-table tbody tr:hover {
+                background-color: #374151; /* Hover darker */
+            }
         }
         </style>
 
@@ -118,10 +147,11 @@ def render():
         </table>
         </div>
 
-        <p style="font-size: 14px; color: gray; margin-top: 1rem;">
+        <p style="font-size: 14px; margin-top: 1rem; color: gray;">
         💡 These behavioral signals help explain the decision behind fraud prediction.
         </p>
         """, unsafe_allow_html=True)
+
 
     def get_fraud_insight(indegree, outdegree, in_btc, out_btc, total_btc):
         insights = []
@@ -268,18 +298,30 @@ def render():
             # Style for each insight box
             st.markdown("""
             <style>
+            /* Light mode (default) */
             .insight-card {
-                background-color: #f9fafb;
-                border-left: 4px solid #ff6b6b;
+                background-color: #f9fafb; /* very light gray */
+                border-left: 4px solid #ff6b6b; /* soft red */
                 padding: 14px 18px;
                 border-radius: 10px;
                 margin-bottom: 12px;
                 font-family: 'Segoe UI', sans-serif;
                 font-size: 15px;
                 line-height: 1.6;
+                color: #000000; /* black text */
+            }
+
+            /* Dark mode overrides */
+            @media (prefers-color-scheme: dark) {
+                .insight-card {
+                    background-color: #1f2937; /* dark gray-blue */
+                    border-left: 4px solid #fb7185; /* bright pink-red */
+                    color: #ffffff; /* white text */
+                }
             }
             </style>
             """, unsafe_allow_html=True)
+
 
             for reason in flagged_reasons:
                 st.markdown(f'<div class="insight-card">{reason}</div>', unsafe_allow_html=True)
