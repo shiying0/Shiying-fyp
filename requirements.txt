@@ -1,7 +1,10 @@
 streamlit
 streamlit-lottie
-matplotlib
-joblib
 pandas
 numpy
+joblib
+requests
+matplotlib
+seaborn
+plotly
 scikit-learn
