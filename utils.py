@@ -191,7 +191,7 @@ def display_custom_sidebar():
 
             .custom-footer {
                 position: absolute;
-                bottom: -265px;  /* Adjust this value to move the footer up or down */
+                bottom: -160px;  /* Adjust this value to move the footer up or down */
                 width: 100%;
                 text-align: center;
                 font-size: 13px;

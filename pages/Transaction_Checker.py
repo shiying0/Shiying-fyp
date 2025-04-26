@@ -152,7 +152,6 @@ def render():
         </p>
         """, unsafe_allow_html=True)
 
-
     def get_fraud_insight(indegree, outdegree, in_btc, out_btc, total_btc):
         insights = []
 
@@ -168,7 +167,7 @@ def render():
         if out_btc > 2:
             insights.append("💸 Large amount sent-- This transaction sends a lot of BTC, which might be part of a draining attack.")
 
-        if total_btc >= 4:
+        if total_btc >= 3:
             insights.append("📊 High BTC flow-- This transaction involves a large total amount of BTC, which could indicate a high-value transfer, whale wallet activity, or institutional movement.")
 
         if not insights:
@@ -321,7 +320,6 @@ def render():
             }
             </style>
             """, unsafe_allow_html=True)
-
 
             for reason in flagged_reasons:
                 st.markdown(f'<div class="insight-card">{reason}</div>', unsafe_allow_html=True)
