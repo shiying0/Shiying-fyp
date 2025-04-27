@@ -2,10 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-import requests
 import json
-import sys
-import os
 from streamlit_lottie import st_lottie
 
 def render():
@@ -19,7 +16,6 @@ def render():
         lottie_animation = json.load(f)
     
     st_lottie(lottie_animation, height=300)
-
     st.title(" Blockchain Fraud Detection ")
     st.write("---")
     st.write("Upload your blockchain transaction dataset (.csv) to detect fraudulent transactions.")

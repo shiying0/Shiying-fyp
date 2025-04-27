@@ -231,7 +231,6 @@ def render():
     # Create input array
     user_input = np.array([[user_in_btc, user_out_btc, user_total_btc, user_indegree, user_outdegree,user_out_malicious]])
 
-
     st.write(" ")
     button_col1, button_col2, button_col3 = st.columns([3, 1, 3])
 
